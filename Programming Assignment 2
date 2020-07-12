@@ -1,0 +1,105 @@
+> 
+> R version 4.0.0 (2020-04-24) -- "Arbor Day"
+Error: unexpected symbol in "R version"
+> Copyright (C) 2020 The R Foundation for Statistical Computing
+Error: unexpected numeric constant in "Copyright (C) 2020"
+> Platform: x86_64-w64-mingw32/x64 (64-bit)
+Error: object 'Platform' not found
+> 
+> R is free software and comes with ABSOLUTELY NO WARRANTY.
+Error: unexpected symbol in "R is"
+> You are welcome to redistribute it under certain conditions.
+Error: unexpected symbol in "You are"
+> Type 'license()' or 'licence()' for distribution details.
+Error: unexpected string constant in "Type 'license()'"
+> 
+>   Natural language support but running in an English locale
+Error: unexpected symbol in "  Natural language"
+> 
+> R is a collaborative project with many contributors.
+Error: unexpected symbol in "R is"
+> Type 'contributors()' for more information and
+Error: unexpected string constant in "Type 'contributors()'"
+> 'citation()' on how to cite R or R packages in publications.
+Error: unexpected symbol in "'citation()' on"
+> 
+> Type 'demo()' for some demos, 'help()' for on-line help, or
+Error: unexpected string constant in "Type 'demo()'"
+> 'help.start()' for an HTML browser interface to help.
+Error: unexpected 'for' in "'help.start()' for"
+> Type 'q()' to quit R.
+Error: unexpected string constant in "Type 'q()'"
+> 
+> > makeVector <- function(x = numeric()) {
+Error: unexpected '>' in ">"
+> +         m <- NULL
+Error in +m <- NULL : object 'm' not found
+> +         set <- function(y) {
++ +                 x <<- y
++ +                 m <<- NULL
++ +         }
+Error: unexpected '}' in:
+"+                 m <<- NULL
++         }"
+> +         get <- function() x
+Error in +get <- function() x : could not find function "+<-"
+> +         setmean <- function(mean) m <<- mean
+Error in +setmean <- function(mean) m <<- mean : 
+  object 'setmean' not found
+> +         getmean <- function() m
+Error in +getmean <- function() m : object 'getmean' not found
+> +         list(set = set, get = get,
++ +              setmean = setmean,
+Error: unexpected '=' in:
+"+         list(set = set, get = get,
++              setmean ="
+> +              getmean = getmean)
+Error: unexpected ')' in "+              getmean = getmean)"
+> + }
+Error: unexpected '}' in "+ }"
+> > makeCacheMatrix <- function(x = matrix()) {
+Error: unexpected '>' in ">"
+> +   inv <- NULL
+Error in +inv <- NULL : object 'inv' not found
+> +   set <- function(y){
++ +     x <<- y
++ +     inv <<- NULL
++ +   }
+Error: unexpected '}' in:
+"+     inv <<- NULL
++   }"
+> +   get <- function() x
+Error in +get <- function() x : could not find function "+<-"
+> +   setInverse <- function(solveMatrix) inv <<- solveMatrix
+Error in +setInverse <- function(solveMatrix) inv <<- solveMatrix : 
+  object 'setInverse' not found
+> +   getInverse <- function() inv
+Error in +getInverse <- function() inv : object 'getInverse' not found
+> +   list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
+Error: object 'set' not found
+> + }
+Error: unexpected '}' in "+ }"
+> > ## This function computes the inverse of the special "matrix" returned by makeCacheMatrix above.
+Error: unexpected '>' in ">"
+> > cacheSolve <- function(x, ...) {
+Error: unexpected '>' in ">"
+> +   ## Return a matrix that is the inverse of 'x'
++ +   inv <- x$getInverse()
+Error: object 'x' not found
+> +   if(!is.null(inv)){
++ +     message("getting cached data")
++ +     return(inv)
++ +   }
+Error: unexpected '}' in:
+"+     return(inv)
++   }"
+> +   data <- x$get()
+Error: object 'x' not found
+> +   inv <- solve(data)
+Error in as.vector(x, mode) : 
+  cannot coerce type 'closure' to vector of type 'any'
+> +   x$setInverse(inv)
+Error: object 'x' not found
+> +   inv      
+Error: object 'inv' not found
+> + }
